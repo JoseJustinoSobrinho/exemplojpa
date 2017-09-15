@@ -5,23 +5,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@Entity  /// dizendo que a classe é uma entidade
-public class Categoria {
+@Entity
+public class Produto {
     
-    @Id   /// identificador da chave primaria   PK  , OBS TEM DE FICAR ACIMA DO CAMPO QUE DEVE SER A CHAVE PRIMARIA
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)  /// auto incremento // INCREMENTA UM NA CHAVE PRIMARIA
     private int id;
     private String nome;
     private String descricao;
+    private float preco;
+    @ManyToOne  // um produto tem somente uma categoria, e uma categoria tem vários produtos.
+    private Categoria categoria;
 
-    public Categoria() {
+    public Produto() {
     }
 
-    public Categoria(int id, String nome, String descricao) {
+    public Produto(int id, String nome, String descricao, float preco, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -48,10 +54,26 @@ public class Categoria {
         this.descricao = descricao;
     }
 
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.id;
+        int hash = 7;
+        hash = 97 * hash + this.id;
         return hash;
     }
 
@@ -66,7 +88,7 @@ public class Categoria {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Categoria other = (Categoria) obj;
+        final Produto other = (Produto) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -75,10 +97,8 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", categoria=" + categoria + '}';
     }
-
-   
     
     
 }

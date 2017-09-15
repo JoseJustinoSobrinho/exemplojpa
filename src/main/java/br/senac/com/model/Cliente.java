@@ -1,36 +1,30 @@
 
 package br.senac.com.model;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@Entity     //// clase é uma entidade
-public class Sexo {
-    
-    @Id  // 
-    @GeneratedValue(strategy = GenerationType.AUTO)  /// 
+@Entity
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)  /// auto incremento // INCREMENTA UM NA CHAVE PRIMARIA
     private int id;
     private String nome;
-    private char sigla;
+    private String cpf;
+    @ManyToOne
+    private Sexo sexo;
 
-    public Sexo() {  // primeiro é o padrão
+    public Cliente() {
     }
 
-    public Sexo(int id, String nome, char sigla) {
+    public Cliente(int id, String nome, String cpf, Sexo sexo) {
         this.id = id;
         this.nome = nome;
-        this.sigla = sigla;
-    }
-
-    public char getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(char sigla) {
-        this.sigla = sigla;
+        this.cpf = cpf;
+        this.sexo = sexo;
     }
 
     public int getId() {
@@ -49,15 +43,31 @@ public class Sexo {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
     @Override
-    public int hashCode() {   // somente o Id
+    public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.id;
+        hash = 97 * hash + this.id;
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {   // somente o id
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -67,7 +77,7 @@ public class Sexo {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Sexo other = (Sexo) obj;
+        final Cliente other = (Cliente) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -76,8 +86,9 @@ public class Sexo {
 
     @Override
     public String toString() {
-        return "Sexo{" + "id=" + id + ", nome=" + nome + ", sigla=" + sigla + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", sexo=" + sexo + '}';
     }
+    
     
     
 }

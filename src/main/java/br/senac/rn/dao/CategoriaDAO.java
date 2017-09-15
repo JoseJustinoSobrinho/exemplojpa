@@ -15,8 +15,8 @@ public class CategoriaDAO {
     private EntityManagerFactory factory;  // precisa dedes dois para o hibernete, fábrica de gerenciador de entidades
     
       public CategoriaDAO() {  // usar o construtor
-        factory = Persistence.createEntityManagerFactory("ConexaoDB");  // peguei da unidade de persistencia
-        manager = factory.createEntityManager();
+        factory = Persistence.createEntityManagerFactory("ConexaoDB");  // peguei da unidade de persistencia  // factory é conecsão o banco
+        manager = factory.createEntityManager();     // GERENCIADOR DE ENTIDADES manager
     }
     
     public void inserir (Categoria categoria){
@@ -39,15 +39,15 @@ public class CategoriaDAO {
       
       
          public List<Categoria> buscarTodos(){
-        TypedQuery<Categoria> consulta = manager.createQuery("SELECT s FROM Sexo s", Categoria.class);
+        TypedQuery<Categoria> consulta = manager.createQuery("SELECT s FROM Caterogia s", Categoria.class);
         return consulta.getResultList();
     }
 
   public Categoria buscarPorId(int id){
-//        Sexo s = manager.find(Sexo.class, id);
-//        return s;
+        Categoria s = manager.find(Categoria.class, id);
+        return s;
         
-        return manager.find(Categoria.class, id); // diminuindo      
+//        return manager.find(Categoria.class, id); // diminuindo      
     }
   
 }

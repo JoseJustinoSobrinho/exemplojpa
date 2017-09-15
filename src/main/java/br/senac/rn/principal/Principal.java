@@ -2,8 +2,10 @@
 package br.senac.rn.principal;
 
 import br.senac.com.model.Categoria;
+import br.senac.com.model.Produto;
 import br.senac.com.model.Sexo;
 import br.senac.rn.dao.CategoriaDAO;
+import br.senac.rn.dao.ProdutoDAO;
 import br.senac.rn.dao.SexoDAO;
 
 public class Principal {
@@ -55,11 +57,11 @@ public class Principal {
 ////        }
 ////    }
 //            
-     Sexo s1 = new Sexo();
-        
-        s1.setId(2);
-        s1.setNome("masculino");
-        s1.setSigla('M');
+//     Categoria s1 = new Categoria();
+//        
+//        s1.setId(2);
+//        s1.setNome("contribuinte");
+//        s1.setDescricao("c");
 ////                
 ////        System.out.println(s1.toString());
 ////        
@@ -79,12 +81,12 @@ public class Principal {
 ////             System.out.println("!diferentes");
 ////        }
 //
-        System.exit(0);
+//        System.exit(0);
 //
 //    }
     
     
-     /////////// SEXO  >>>>>>>>>>>>>>>>
+     /////////// categoria  >>>>>>>>>>>>>>>>
 //        CategoriaDAO dao = new CategoriaDAO();
 //        System.out.println(dao.buscarTodos().toString());  /// lista lateral
 //        System.exit(0);   
@@ -99,13 +101,24 @@ public class Principal {
         
 //       Sexo s1 = new Sexo(3, "Indefinido", 'I'); ind não automatica
 
-//////////       Sexo s1 = new Sexo();     // construir automatico
-//////////       s1.setNome("Outros");
-//////////       s1.setSigla('O');
+//       Categoria s1 = new Categoria();     // construir automatico
+//       s1.setNome("Contribuinte");
+//       s1.setDescricao("C");     
+//       CategoriaDAO dao = new CategoriaDAO();  obs:  rolbach() é interessante quando não foi concluida a transação..
+//       dao.inserir(s1); 
+//       
+//        Categoria s1 = new Categoria();     // construir automatico
+//       s1.setNome("Dependente");
+//       s1.setDescricao("D");     
+//       CategoriaDAO dao = new CategoriaDAO();
+//       dao.inserir(s1); 
+////        
 ////////////////       
 ////////////       SexoDAO dao = new SexoDAO();
 //////////       dao.inserir(s1); 
-        
+//             Sexo s1 = new Sexo();     // construir automatico
+//       s1.setNome("Outros");
+//       s1.setSigla('O');
 //        Sexo s1 = new Sexo();
 //        
 //        s1.setId(2);
@@ -154,6 +167,15 @@ public class Principal {
 //        } else {
 //             System.out.println("!diferentes");
 //        }
+
+       Produto s1 = new Produto();     // construir automatico
+       s1.setNome("Detergente");
+       s1.setDescricao("D");
+       s1.setPreco(10);  // float
+       s1.setCategoria(new CategoriaDAO().buscarPorId(1));
+       ProdutoDAO dao = new ProdutoDAO();
+       dao.inserir(s1); 
+//        
 
         System.exit(0);
 

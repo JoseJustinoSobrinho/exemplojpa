@@ -1,7 +1,7 @@
 
 package br.senac.rn.dao;
 
-import br.senac.com.model.Sexo;
+import br.senac.com.model.Produto;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,44 +9,47 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 
-public class SexoDAO {  
-    private EntityManager manager;  // gerenciador de entidades. 
+public class ProdutoDAO {
+     private EntityManager manager;  // gerenciador de entidades. 
     private EntityManagerFactory factory;  // precisa dedes dois para o hibernete, fábrica de gerenciador de entidades
 
-    public SexoDAO() {  // usar o construtor
+     public ProdutoDAO() {  // usar o construtor
         factory = Persistence.createEntityManagerFactory("ConexaoDB");  // peguei da unidade de persistencia
         manager = factory.createEntityManager();
     }
-    
-    public void inserir (Sexo sexo){
+          
+      public void inserir (Produto produto){
         manager.getTransaction().begin();
-        manager.persist(sexo);   // inserir
+        manager.persist(produto);   // inserir
         manager.getTransaction().commit();
     }
-            
-    public void excluir(Sexo sexo){
+     
+      
+        public void excluir(Produto produto){
         manager.getTransaction().begin();
-        manager.remove(sexo);   // apagar ou excluir
+        manager.remove(produto);   // apagar ou excluir
         manager.getTransaction().commit();                        
     }
     
-    public void atualizar(Sexo sexo){
+    public void atualizar(Produto produto){
         manager.getTransaction().begin();
-        manager.merge(sexo);   // atualizar
+        manager.merge(produto);   // atualizar
         manager.getTransaction().commit();
 }
     
-    public List<Sexo> buscarTodos(){
-        TypedQuery<Sexo> consulta = manager.createQuery("SELECT s FROM Sexo s", Sexo.class);
+     public List<Produto> buscarTodos(){
+        TypedQuery<Produto> consulta = manager.createQuery("SELECT s FROM Sexo s", Produto.class);
         return consulta.getResultList();
     }
     
     
-    public Sexo buscarPorId(int id){
+    public Produto buscarPorId(int id){
 //        Sexo s = manager.find(Sexo.class, id);
 //        return s;
         
-        return manager.find(Sexo.class, id); // diminuindo
+        return manager.find(Produto.class, id); // diminuindo
       
     }
+    
 }
+
