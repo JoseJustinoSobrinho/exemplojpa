@@ -49,4 +49,12 @@ public class SexoDAO {
         return manager.find(Sexo.class, id); // diminuindo
       
     }
+    
+       public Sexo buscarPorTipo(String tipo){
+//        Sexo s = manager.find(Sexo.class, id);
+//        return s;
+        
+        return manager.find(Sexo.class, tipo); // diminuindo
+      
+    }
 }

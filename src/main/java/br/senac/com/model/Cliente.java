@@ -1,27 +1,28 @@
 
 package br.senac.com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity (name = "tb_cliente")  // desta forma escolher o nome da tabela se não vai o nome da Classe
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)  /// auto incremento // INCREMENTA UM NA CHAVE PRIMARIA
     private int id;
     private String nome;
+    @Column(unique = true)  // não repetir cpf
     private String cpf;
-    @ManyToOne
+    @ManyToOne  // clase interna to classe de fora    o outro seria ManyToMany
     private Sexo sexo;
 
     public Cliente() {
     }
 
-    public Cliente(int id, String nome, String cpf, Sexo sexo) {
-        this.id = id;
+    public Cliente(String nome, String cpf, Sexo sexo) {        
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;

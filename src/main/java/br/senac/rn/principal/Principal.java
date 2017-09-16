@@ -2,11 +2,15 @@
 package br.senac.rn.principal;
 
 import br.senac.com.model.Categoria;
+import br.senac.com.model.Cliente;
 import br.senac.com.model.Produto;
 import br.senac.com.model.Sexo;
+import br.senac.com.model.Vendas;
 import br.senac.rn.dao.CategoriaDAO;
+import br.senac.rn.dao.ClienteDAO;
 import br.senac.rn.dao.ProdutoDAO;
 import br.senac.rn.dao.SexoDAO;
+import br.senac.rn.dao.VendasDAO;
 
 public class Principal {
     public static void main(String[] args) {
@@ -168,17 +172,44 @@ public class Principal {
 //             System.out.println("!diferentes");
 //        }
 
-       Produto s1 = new Produto();     // construir automatico
-       s1.setNome("Detergente");
-       s1.setDescricao("D");
-       s1.setPreco(10);  // float
-       s1.setCategoria(new CategoriaDAO().buscarPorId(1));
-       ProdutoDAO dao = new ProdutoDAO();
-       dao.inserir(s1); 
-//        
+//       Produto s1 = new Produto();     // construir automatico
+//       s1.setNome("Cereais");
+//       s1.setDescricao("R");
+//       s1.setPreco(20);  // float
+//       s1.setCategoria(new CategoriaDAO().buscarPorId(1));
+//       ProdutoDAO dao = new ProdutoDAO();
+//       dao.inserir(s1); 
+//        System.exit(0);
 
-        System.exit(0);
+//Cliente s1 = new Cliente();     // construir automatico
+//       s1.setNome("José Justino Sobrinho");
+//       s1.setCpf("91253799415");
+//       s1.setSexo(new SexoDAO().buscarPorId(1));
+//       ClienteDAO dao = new ClienteDAO();
+//       dao.inserir(s1); 
+//        System.exit(0);
+        
+//        Cliente s1 = new Cliente();     // construir automatico   // esse deu erro
+//       s1.setNome("Ana Lúcia Soares");
+//       s1.setCpf("83747761453");
+//       s1.setSexo(new SexoDAO().buscarPorId(2));
+//       ClienteDAO dao = new ClienteDAO();
+//       dao.inserir(s1); 
+//        System.exit(0);
+    
 
+// new ClienteDAO().inserir(new Cliente("Ulinha", "14344432", new SexoDAO().buscarPorId(2)));  //ok
+ 
+ 
+// Cliente s1 = new Cliente();     // construir automatico
+//       s1.setNome("Ana Lúcia Soares");
+//       s1.setCpf("83747761453");
+//       s1.setSexo(new SexoDAO().buscarPorId(1));
+//       ClienteDAO dao = new ClienteDAO();
+
+        new VendasDAO().inserir(new Vendas(new ClienteDAO().buscarPorId(2), 33, ));  //ok
+  
+    
     }
     
 }
