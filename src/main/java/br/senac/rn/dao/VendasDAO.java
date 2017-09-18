@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 public class VendasDAO {
         private EntityManager manager;  // gerenciador de entidades. 
-    private EntityManagerFactory factory;  // precisa dedes dois para o hibernete, fábrica de gerenciador de entidades
+        private EntityManagerFactory factory;  // precisa dedes dois para o hibernete, fábrica de gerenciador de entidades
 
      public VendasDAO() {  // usar o construtor
         factory = Persistence.createEntityManagerFactory("ConexaoDB");  // peguei da unidade de persistencia
@@ -19,6 +19,7 @@ public class VendasDAO {
         manager.getTransaction().begin();
         manager.persist(vendas);   // inserir
         manager.getTransaction().commit();
+        manager.close();
     }
     
     

@@ -36,7 +36,7 @@ public class ClienteDAO {
         manager.getTransaction().commit();
 }   
       public List<Cliente> buscarTodos(){
-        TypedQuery<Cliente> consulta = manager.createQuery("SELECT s FROM Clientes s", Cliente.class);
+        TypedQuery<Cliente> consulta = manager.createQuery("SELECT s FROM Cliente s", Cliente.class);
         return consulta.getResultList();
     }
        
@@ -45,8 +45,25 @@ public class ClienteDAO {
 //        Sexo s = manager.find(Sexo.class, id);
 //        return s;        
         return manager.find(Cliente.class, id); // diminuindo      
+             
     }
     
-    
+    public Cliente buscarPorCpf(String cpf){
+        String jpql = "SELECT c FROM tb_cliente c WHERE c.cpf = :cpfCliente";
+        TypedQuery<Cliente> consulta = manager.createQuery(jpql, Cliente.class);
+        consulta.setParameter("cpfCliente", cpf);
+        return consulta.getSingleResult();
+        
+//        return null;
+    }
+
+   public List<Cliente> buscarPorParteCpf(String cpf){
+        String jpql = "SELECT c FROM tb_cliente c WHERE c.cpf like :cpf";
+        TypedQuery<Cliente> consulta = manager.createQuery(jpql, Cliente.class);
+        consulta.setParameter("cpf", "%" + cpf + "%");
+        return consulta.getResultList();
+        
+//        return null;
+    }
           
 }

@@ -22,7 +22,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, Sexo sexo) {        
+    public Cliente(int id, String nome, String cpf, Sexo sexo) {   
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;

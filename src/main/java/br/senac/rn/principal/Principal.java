@@ -11,6 +11,10 @@ import br.senac.rn.dao.ClienteDAO;
 import br.senac.rn.dao.ProdutoDAO;
 import br.senac.rn.dao.SexoDAO;
 import br.senac.rn.dao.VendasDAO;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import javax.naming.ldap.ManageReferralControl;
 
 public class Principal {
     public static void main(String[] args) {
@@ -201,15 +205,42 @@ public class Principal {
 // new ClienteDAO().inserir(new Cliente("Ulinha", "14344432", new SexoDAO().buscarPorId(2)));  //ok
  
  
-// Cliente s1 = new Cliente();     // construir automatico
-//       s1.setNome("Ana Lúcia Soares");
-//       s1.setCpf("83747761453");
-//       s1.setSexo(new SexoDAO().buscarPorId(1));
-//       ClienteDAO dao = new ClienteDAO();
+ Vendas s1 = new Vendas();     // construir automatico
+       s1.setCliente(new ClienteDAO().buscarPorId(2));
+       s1.setData(Calendar.getInstance());
+       List<Produto> produtos = new ArrayList();
+       
+       produtos.add(new ProdutoDAO().buscarPorId(4));
+       produtos.add(new ProdutoDAO().buscarPorId(4));
+       produtos.add(new ProdutoDAO().buscarPorId(4));
+       produtos.add(new ProdutoDAO().buscarPorId(2));
+       
+       s1.setProdutos(produtos);
+       float valor = 0;
+       for(Produto p : produtos){
+           valor += p.getPreco();
+       }
+       s1.setValor(valor);       
+       new VendasDAO().inserir(s1);
+//
+//        new VendasDAO().inserir(new Vendas(new ClienteDAO().buscarPorId(2), 33, ));  //ok
+     
+      System.exit(0);
 
-        new VendasDAO().inserir(new Vendas(new ClienteDAO().buscarPorId(2), 33, ));  //ok
-  
-    
+
+
+//
+//        new VendasDAO().inserir(new Vendas(new ClienteDAO().buscarPorId(2), 33, ));  //ok
+     
+//      System.exit(0);
+
+//        System.out.println(new ClienteDAO().buscarPorCpf("91253799415"));  /// lista lateral
+//        System.exit(0);   
+
+
+//        System.out.println(new ClienteDAO().buscarPorParteCpf("37"));  /// lista lateral
+//        System.exit(0);   
+
     }
     
 }
