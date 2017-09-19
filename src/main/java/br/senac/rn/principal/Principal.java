@@ -205,27 +205,28 @@ public class Principal {
 // new ClienteDAO().inserir(new Cliente("Ulinha", "14344432", new SexoDAO().buscarPorId(2)));  //ok
  
  
- Vendas s1 = new Vendas();     // construir automatico
-       s1.setCliente(new ClienteDAO().buscarPorId(2));
-       s1.setData(Calendar.getInstance());
-       List<Produto> produtos = new ArrayList();
-       
-       produtos.add(new ProdutoDAO().buscarPorId(4));
-       produtos.add(new ProdutoDAO().buscarPorId(4));
-       produtos.add(new ProdutoDAO().buscarPorId(4));
-       produtos.add(new ProdutoDAO().buscarPorId(2));
-       
-       s1.setProdutos(produtos);
-       float valor = 0;
-       for(Produto p : produtos){
-           valor += p.getPreco();
-       }
-       s1.setValor(valor);       
-       new VendasDAO().inserir(s1);
+//////// Vendas s1 = new Vendas();     // construir automatico
+////////       s1.setCliente(new ClienteDAO().buscarPorId(2));
+////////       s1.setData(Calendar.getInstance());
+////////       List<Produto> produtos = new ArrayList();
+////////       
+////////       produtos.add(new ProdutoDAO().buscarPorId(4));
+////////       produtos.add(new ProdutoDAO().buscarPorId(4));
+////////       produtos.add(new ProdutoDAO().buscarPorId(4));
+////////       produtos.add(new ProdutoDAO().buscarPorId(2));
+////////       
+////////       s1.setProdutos(produtos);
+////////       float valor = 0;
+////////       for(Produto p : produtos){
+////////           valor += p.getPreco();
+////////       }
+////////       s1.setValor(valor);       
+////////       new VendasDAO().inserir(s1);
 //
 //        new VendasDAO().inserir(new Vendas(new ClienteDAO().buscarPorId(2), 33, ));  //ok
      
-      System.exit(0);
+////        new ClienteDAO().inserir(new Cliente(new ClienteDAO().buscarPorId(2), 33, ));  //ok
+////      System.exit(0);
 
 
 
@@ -241,6 +242,9 @@ public class Principal {
 //        System.out.println(new ClienteDAO().buscarPorParteCpf("37"));  /// lista lateral
 //        System.exit(0);   
 
+
+     new SexoDAO().inserir(new Sexo(0, "Masculino", 'M'));  //ok
+      System.exit(0);
     }
     
 }
