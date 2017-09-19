@@ -24,6 +24,13 @@ public class Categoria {
         this.descricao = descricao;
     }
 
+    public Categoria(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

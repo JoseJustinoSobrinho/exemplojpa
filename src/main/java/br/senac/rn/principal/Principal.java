@@ -112,7 +112,7 @@ public class Principal {
 //       Categoria s1 = new Categoria();     // construir automatico
 //       s1.setNome("Contribuinte");
 //       s1.setDescricao("C");     
-//       CategoriaDAO dao = new CategoriaDAO();  obs:  rolbach() é interessante quando não foi concluida a transação..
+//       CategoriaDAO dao = new CategoriaDAO();  //obs:  rolbach() é interessante quando não foi concluida a transação..
 //       dao.inserir(s1); 
 //       
 //        Categoria s1 = new Categoria();     // construir automatico
@@ -243,8 +243,34 @@ public class Principal {
 //        System.exit(0);   
 
 
-     new SexoDAO().inserir(new Sexo(0, "Masculino", 'M'));  //ok
-      System.exit(0);
+//     new SexoDAO().inserir(new Sexo(0, "Masculino", 'M'));  //ok
+//      System.exit(0);
+//    }
+       
+//     new CategoriaDAO().insert(new Categoria("bb", "cc"));  //ok
+//      System.exit(0);
+      
+           
+////      
+//        System.out.println(new CategoriaDAO().selectAll());  /// ok
+//        System.exit(0);   
+//      
+      
+        
+//        System.out.println(new CategoriaDAO().selectById(1));  /// ok
+//        System.exit(0);   
+      
+          CategoriaDAO dao = new CategoriaDAO();
+          Categoria categoria = dao.selectById(1);
+          categoria.setNome("Outra Categoria");
+          categoria.setDescricao("Esta é a descrição");
+          dao.update(categoria);
+          System.exit(0);   
+      
+
     }
+    
+    
+    
     
 }
